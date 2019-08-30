@@ -7,6 +7,12 @@ pipeline {
   }
   stages {
     stage('Build') {
+      agent {
+        node {
+          label 'master'
+        }
+
+      }
       steps {
         withMaven(maven: 'M3')
         sh 'mvn clean install'
